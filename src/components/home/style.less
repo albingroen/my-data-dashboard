@@ -1,7 +1,53 @@
-@import '~style/helpers';
+@import "~style/helpers";
 
 .home {
-	padding: 56px 20px;
-	min-height: 100%;
+	margin: 0 auto;
+	margin-top: calc(56px + 30px);
+	max-width: 1250px;
 	width: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
+	min-height: 100%;
+	padding-bottom: 50px;
+
+	label {
+		font-weight: bolder;
+		text-transform: uppercase;
+		letter-spacing: 0.25px;
+		font-size: 0.85em;
+		padding-bottom: 0.5rem;
+		display: inline-block;
+	}
+
+	.infoContainer {
+		background: #e8f3ec;
+		border-radius: 3px;
+		padding: 1.5rem;
+		width: 70%;
+
+		h2 {
+			padding-top: 0;
+		}
+	}
+
+	.cards {
+		margin-left: -0.5rem;
+
+		.containerWrapper {
+			min-width: 200px;
+			margin-top: 1rem;
+			margin: 0.5rem;
+			display: inline-block;
+			box-sizing: border-box;
+			@media (max-width: 500px) {
+				width: 97%;
+			}
+
+			img {
+				border-radius: 3px;
+				margin-bottom: 0.5rem;
+				width: 35px;
+			}
+		}
+	}
 }

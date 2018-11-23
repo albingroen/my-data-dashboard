@@ -1,17 +1,19 @@
 import { h, Component } from "preact";
-import { Container } from "@wopify/ui-design";
 import { Link } from "preact-router";
 import style from "./style.less";
 
 export default class Header extends Component {
 	render() {
 		return (
-			<header class={style.header}>
-				<h1>Preact App</h1>
-				<nav>
-					<Link href="/">Home</Link>
-				</nav>
-			</header>
+			<footer>
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://clearbit.com"
+				>
+					Logos provided by Clearbit™
+				</a>
+			</footer>
 		);
 	}
 }
