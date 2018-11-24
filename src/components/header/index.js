@@ -15,10 +15,6 @@ export default class Header extends Component {
 				<nav>
 					<H3>MyData™</H3>
 
-					<a href={url}>
-						<Button primary>Login with Google</Button>
-					</a>
-
 					{token && (
 						<Button
 							onClick={() => {

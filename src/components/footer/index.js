@@ -6,13 +6,8 @@ export default class Header extends Component {
 	render() {
 		return (
 			<footer>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://clearbit.com"
-				>
-					Logos provided by Clearbit™
-				</a>
+				<p>This website is only used for demonstration purposes</p>
+				<p>Made during hackjunction 2018</p>
 			</footer>
 		);
 	}
