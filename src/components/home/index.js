@@ -39,7 +39,7 @@ export default class Home extends Component {
 				})
 				.catch(err => {
 					localStorage.removeItem("token");
-					window.location.replace("/login");
+					window.location.replace("/");
 					console.log(err);
 				});
 		}
@@ -232,7 +232,9 @@ export const ServiceItem = props => {
 						{capitalizeFirstLetter(item.domain.split(".")[0])} shares this data
 						with
 					</p>
-					<p style={{ color: "grey" }}>5 other services/companies</p>
+					<p style={{ color: "grey" }}>
+						{Math.floor(Math.random() * 10)} other services/companies
+					</p>
 					<p style={{ alignSelf: "center", color: "grey", marginTop: 10 }}>
 						Read more
 					</p>

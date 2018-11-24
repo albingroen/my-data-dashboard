@@ -8,7 +8,7 @@ import {
 	Container,
 	Button,
 	Input,
-	Popup,
+	Popup
 } from "@wopify/ui-design";
 import axios from "axios";
 import warning from "../../../src/warning.png";
@@ -19,7 +19,7 @@ export default class Home extends Component {
 		super();
 		this.state = {
 			searchValue: "",
-			deletePopup: false,
+			deletePopup: false
 		};
 	}
 
@@ -28,7 +28,7 @@ export default class Home extends Component {
 		// Authenticate
 		axios
 			.post("https://thawing-mountain-85132.herokuapp.com/v1/auth/success", {
-				code: this.props.matches.code,
+				code: this.props.matches.code
 			})
 			.then(res => {
 				const { history } = this.props;
@@ -36,7 +36,7 @@ export default class Home extends Component {
 			})
 			.catch(err => {
 				localStorage.removeItem("token");
-				window.location.replace("/login");
+				window.location.replace("/");
 				console.log(err);
 			});
 	}

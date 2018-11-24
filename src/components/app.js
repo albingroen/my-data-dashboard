@@ -32,7 +32,7 @@ export default class App extends Component {
 				<Header />
 				<Router onChange={this.handleRoute}>
 					<Auth path="/auth/google/callback" />
-					<Login path="/login" />
+					<Login path="/" />
 				</Router>
 				<Footer />
 			</div>

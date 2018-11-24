@@ -8,7 +8,7 @@ import GoogleButton from "react-google-button";
 export default class Login extends Component {
 	render() {
 		let url =
-			"https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly&response_type=code&client_id=120720206824-cibobt957sd9rtmlu4l71toorl15ngap.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauth%2Fgoogle%2Fcallback";
+			"https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly&response_type=code&client_id=418902873389-p3uqufaaju5588e1nt54euapt0h17f1s.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Fmydata.now.sh%2Fauth%2Fgoogle%2Fcallback";
 		return (
 			<div className={style.wrapper}>
 				<div className={style.leftSide}>
@@ -26,7 +26,7 @@ export default class Login extends Component {
 							justifyContent: "center",
 							alignItems: "center",
 							display: "flex",
-							flexDirection: "column",
+							flexDirection: "column"
 						}}
 					>
 						<h1 style={{ color: "black" }}>
@@ -39,7 +39,7 @@ export default class Login extends Component {
 							flex: 1,
 							display: "flex",
 							flexDirection: "column",
-							alignItems: "center",
+							alignItems: "center"
 						}}
 					>
 						<a style={{ textDecoration: "none" }} href={url}>
@@ -50,7 +50,7 @@ export default class Login extends Component {
 								width: "60%",
 								textAlign: "center",
 								marginTop: 20,
-								color: "grey",
+								color: "grey"
 							}}
 						>
 							By signing in you agree to our terms and that you have read our
