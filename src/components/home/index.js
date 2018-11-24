@@ -52,9 +52,15 @@ export default class Home extends Component {
 	}
 
 	renderDeletePoup(service) {
+		function capitalizeFirstLetter(string) {
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}
+
 		return (
 			<Popup
-				title={`Remove data from ${service.domain.split(".")[0]}?`}
+				title={`Remove data from ${capitalizeFirstLetter(
+					service.domain.split(".")[0]
+				)}?`}
 				width="500"
 				text="Are you sure you want to delete all of your data from this service? This cannot be undone."
 				warning
@@ -178,6 +184,7 @@ export const ServiceItem = props => {
 	function capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
+
 	return (
 		<div class={style.containerWrapper}>
 			<Container
