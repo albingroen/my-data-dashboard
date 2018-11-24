@@ -8,10 +8,9 @@ import {
 	Container,
 	Button,
 	Input,
-	Popup,
+	Popup
 } from "@wopify/ui-design";
 import axios from "axios";
-import warning from "../../../src/warning.png";
 import style from "./style.less";
 
 export default class Home extends Component {
@@ -20,7 +19,7 @@ export default class Home extends Component {
 		this.state = {
 			searchValue: "",
 			deletePopup: false,
-			data: [],
+			data: []
 		};
 	}
 
@@ -34,7 +33,7 @@ export default class Home extends Component {
 				)
 				.then(res => {
 					this.setState({
-						data: res.data,
+						data: res.data
 					});
 				})
 				.catch(err => {
@@ -47,7 +46,7 @@ export default class Home extends Component {
 
 	handleSearchChange(e) {
 		this.setState({
-			searchValue: e.target.value,
+			searchValue: e.target.value
 		});
 	}
 
@@ -71,12 +70,12 @@ export default class Home extends Component {
 				denyValue="No please"
 				deny={() =>
 					this.setState({
-						deletePopup: false,
+						deletePopup: false
 					})
 				}
 				close={() =>
 					this.setState({
-						deletePopup: false,
+						deletePopup: false
 					})
 				}
 			/>
@@ -88,20 +87,20 @@ export default class Home extends Component {
 		const staticData = [
 			{
 				name: "Facebook",
-				activity: "Yesterday",
+				activity: "Yesterday"
 			},
 			{
 				name: "Snapchat",
-				activity: "1 day ago",
+				activity: "1 day ago"
 			},
 			{
 				name: "Wopify",
-				activity: "1 min ago",
+				activity: "1 min ago"
 			},
 			{
 				name: "Dribbble",
-				activity: "1 min ago",
-			},
+				activity: "1 min ago"
+			}
 		];
 
 		return (
@@ -111,7 +110,7 @@ export default class Home extends Component {
 					style={{
 						fontSize: "2.25em",
 						fontWeight: "lighter",
-						paddingBottom: "2rem",
+						paddingBottom: "2rem"
 					}}
 				>
 					Your {data.length} registered services
@@ -136,7 +135,6 @@ export default class Home extends Component {
 								you do not know which one these are.
 							</P>
 						</div>
-						<img src={warning} alt="" />
 					</div>
 				</div>
 
@@ -145,7 +143,7 @@ export default class Home extends Component {
 						marginBottom: "1rem",
 						marginTop: "1.5rem",
 						display: "block",
-						width: "100%",
+						width: "100%"
 					}}
 					placeholder="Search for services..."
 					value={this.state.searchValue}
@@ -164,7 +162,7 @@ export default class Home extends Component {
 								onDelete={() =>
 									this.setState({
 										deletePopup: true,
-										selectedService: item,
+										selectedService: item
 									})
 								}
 								item={item}
@@ -195,7 +193,7 @@ export const ServiceItem = props => {
 					width: "100%",
 					minHeight: "200px",
 					position: "relative",
-					boxSizing: "border-box",
+					boxSizing: "border-box"
 				}}
 			>
 				<div
@@ -203,7 +201,7 @@ export const ServiceItem = props => {
 					style={{
 						backgroundImage: `url(${`//logo.clearbit.com/${
 							item.domain.split(".")[0]
-						}.com?size=200`})`,
+						}.com?size=200`})`
 					}}
 				/>
 
@@ -216,7 +214,7 @@ export const ServiceItem = props => {
 						background: "none",
 						color: "orangered",
 						padding: 0,
-						marginBottom: "1rem",
+						marginBottom: "1rem"
 					}}
 				>
 					Delete data
