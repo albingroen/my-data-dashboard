@@ -84,7 +84,7 @@ export default class Home extends Component {
 				activity: "1 min ago"
 			},
 			{
-				name: "Linkedin",
+				name: "Dribbble",
 				activity: "1 min ago"
 			}
 		];
@@ -101,6 +101,13 @@ export default class Home extends Component {
 				>
 					Your {data.length} registered services
 				</H1>
+
+				<div class={style.infoCards}>
+					<div class={style.infoCard}>
+						<label>Overall security</label>
+						<H1>6.2</H1>
+					</div>
+				</div>
 
 				<div class={style.infoContainer}>
 					<H2>Master your data in a few clicks.</H2>
@@ -154,7 +161,7 @@ export default class Home extends Component {
 										}
 										warning
 									>
-										Remove data
+										Manage data
 									</Button>
 								</Container>
 							</div>

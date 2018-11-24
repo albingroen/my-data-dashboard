@@ -19,6 +19,44 @@
 		display: inline-block;
 	}
 
+	.infoCards {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding-bottom: 2rem;
+
+		.infoCard {
+			background: dodgerblue;
+			border-radius: 3px;
+			padding: 1rem;
+			height: 150px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 175px;
+			text-align: center;
+			position: relative;
+
+			label {
+				font-size: 0.75m;
+				color: white;
+				padding-bottom: 1rem;
+				display: block;
+				position: absolute;
+				top: 1.25rem;
+				opacity: 0.75;
+			}
+
+			h1 {
+				font-size: 3em;
+				padding-top: 1rem;
+				color: white;
+				font-weight: lighter;
+			}
+		}
+	}
+
 	.infoContainer {
 		background: #e8f3ec;
 		border-radius: 3px;
@@ -58,6 +96,17 @@
 				border-radius: 3px;
 				margin-bottom: 0.5rem;
 				width: 35px;
+			}
+
+			button {
+				background: #17b997;
+				color: white;
+				border: none;
+			}
+
+			div {
+				border: 1px solid #f4f4f4;
+				box-shadow: none;
 			}
 		}
 	}
