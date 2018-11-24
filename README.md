@@ -2,6 +2,8 @@
 
 > Take control of your data.
 
+[Link to API-Repo](https://github.com/albingroen/my-data-api)
+
 ## Installation
 
 Start by cloning the project and entering it

@@ -1,17 +1,5 @@
 import { h, Component } from "preact";
-import cx from "classnames";
-import {
-	H1,
-	H2,
-	H4,
-	P,
-	Container,
-	Button,
-	Input,
-	Popup
-} from "@wopify/ui-design";
 import axios from "axios";
-import warning from "../../../src/warning.png";
 import style from "./style.less";
 
 export default class Home extends Component {
