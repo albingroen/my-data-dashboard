@@ -4,6 +4,7 @@ import { Router } from "preact-router";
 import Header from "./header";
 import Footer from "./footer";
 import Home from "./home";
+import Auth from "./auth";
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
@@ -19,6 +20,7 @@ export default class App extends Component {
 			<div id="app">
 				<Header />
 				<Router onChange={this.handleRoute}>
+					<Auth path="/auth/google/callback" />
 					<Home path="/" />
 				</Router>
 				<Footer />
