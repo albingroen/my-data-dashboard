@@ -19,7 +19,8 @@ export default class Home extends Component {
 		super();
 		this.state = {
 			searchValue: "",
-			deletePopup: false
+			deletePopup: false,
+			data: []
 		};
 	}
 
@@ -33,7 +34,7 @@ export default class Home extends Component {
 				)
 				.then(res => {
 					this.setState({
-						realData: res.data
+						data: res.data
 					});
 				})
 				.catch(err => console.log(err));
@@ -73,7 +74,8 @@ export default class Home extends Component {
 	}
 
 	render() {
-		const data = [
+		const { data, searchValue } = this.state;
+		const staticData = [
 			{
 				name: "Facebook",
 				activity: "Yesterday"
@@ -91,8 +93,6 @@ export default class Home extends Component {
 				activity: "1 min ago"
 			}
 		];
-
-		console.log(this.state.realData);
 
 		return (
 			<div class={style.home}>
@@ -145,58 +145,12 @@ export default class Home extends Component {
 				<div class={style.cards}>
 					{data
 						.filter(item =>
-							item.name
+							item.domain
 								.toLocaleLowerCase()
-								.includes(this.state.searchValue.toLowerCase())
+								.includes(searchValue.toLowerCase())
 						)
 						.map(item => (
-							<div class={style.containerWrapper}>
-								<Container
-									style={{
-										textAlign: "center",
-										display: "inline-block",
-										alignItems: "center",
-										width: "100%",
-										minHeight: "200px",
-										position: "relative",
-										boxSizing: "border-box"
-									}}
-								>
-									<div
-										class={style.logo}
-										style={{
-											backgroundImage: `url(${`//logo.clearbit.com/${
-												item.name
-											}.com?size=200`})`
-										}}
-									/>
-
-									<H2>{item.name}</H2>
-									<H4 style={{ opacity: 0.7 }}>Registered: {item.activity}</H4>
-
-									<Button
-										onClick={() =>
-											this.setState({
-												deletePopup: true,
-												selectedService: item
-											})
-										}
-										style={{
-											background: "none",
-											color: "orangered",
-											padding: 0,
-											marginBottom: "1rem"
-										}}
-									>
-										Delete data
-									</Button>
-									<br />
-
-									<a href="https://www.facebook.com/help/1701730696756992?helpref=hc_global_nav">
-										<Button primary>Download data</Button>
-									</a>
-								</Container>
-							</div>
+							<ServiceItem item={item} />
 						))}
 				</div>
 
@@ -206,3 +160,56 @@ export default class Home extends Component {
 		);
 	}
 }
+
+export const ServiceItem = props => {
+	const { item } = props;
+	return (
+		<div class={style.containerWrapper}>
+			<Container
+				style={{
+					textAlign: "center",
+					display: "inline-block",
+					alignItems: "center",
+					width: "100%",
+					minHeight: "200px",
+					position: "relative",
+					boxSizing: "border-box"
+				}}
+			>
+				<div
+					class={style.logo}
+					style={{
+						backgroundImage: `url(${`//logo.clearbit.com/${
+							item.domain
+						}.com?size=200`})`
+					}}
+				/>
+
+				<H2>{item.domain}</H2>
+				<H4 style={{ opacity: 0.7 }}>Registered: {item.date}</H4>
+
+				<Button
+					onClick={() =>
+						this.setState({
+							deletePopup: true,
+							selectedService: item
+						})
+					}
+					style={{
+						background: "none",
+						color: "orangered",
+						padding: 0,
+						marginBottom: "1rem"
+					}}
+				>
+					Delete data
+				</Button>
+				<br />
+
+				<a href="https://www.facebook.com/help/1701730696756992?helpref=hc_global_nav">
+					<Button primary>Download data</Button>
+				</a>
+			</Container>
+		</div>
+	);
+};
