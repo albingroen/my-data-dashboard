@@ -1,3 +1,5 @@
+import { h, Component } from "preact";
+import cx from "classnames";
 import {
 	H1,
 	H2,
@@ -8,7 +10,8 @@ import {
 	Input,
 	Popup
 } from "@wopify/ui-design";
-import { h, Component } from "preact";
+import axios from "axios";
+import warning from "../../../src/warning.png";
 import style from "./style.less";
 
 export default class Home extends Component {
@@ -16,8 +19,7 @@ export default class Home extends Component {
 		super();
 		this.state = {
 			searchValue: "",
-			deletePopup: false,
-			successPopup: false
+			deletePopup: false
 		};
 	}
 
@@ -49,22 +51,6 @@ export default class Home extends Component {
 						deletePopup: false
 					})
 				}
-			/>
-		);
-	}
-
-	renderSuccessPoup() {
-		return (
-			<Popup
-				title="Your data is now being removed!"
-				width="500"
-				text={`Success, we have now sent a request to about removing your data. The process might take a while and we will inform you when it has successfully been deleted.`}
-				closeValue="Okay, close window"
-				close={() => {
-					this.setState({
-						successPopup: false
-					});
-				}}
 			/>
 		);
 	}
@@ -102,19 +88,35 @@ export default class Home extends Component {
 					Your {data.length} registered services
 				</H1>
 
-				<div class={style.infoCards}>
+				{/* <div class={style.infoCards}>
 					<div class={style.infoCard}>
 						<label>Overall security</label>
 						<H1>6.2</H1>
 					</div>
-				</div>
+				</div> */}
 
-				<div class={style.infoContainer}>
-					<H2>Master your data in a few clicks.</H2>
-					<P>
-						By using MyData™ you can access and manage all of your data from all
-						your registered services in only a few clicks.{" "}
-					</P>
+				<div className={style.infoContainers}>
+					<div class={style.infoContainer}>
+						<div class={style.text}>
+							<H2>Data security (Good)</H2>
+							<P>
+								By scanning all of your services and analysing the content we
+								can estimate a average security-level on your used services.
+							</P>
+						</div>
+					</div>
+
+					<div class={cx(style.infoContainer, style.warning)}>
+						<div class={style.text}>
+							<H2>Data Spreadage (Wide)</H2>
+							<P>
+								Data Spreadage means how many actors besides the services you
+								registered has access to the data. This can be dangerous since
+								you do not know which one these are.
+							</P>
+						</div>
+						<img src={warning} alt="" />
+					</div>
 				</div>
 
 				<Input
@@ -148,9 +150,17 @@ export default class Home extends Component {
 										boxSizing: "border-box"
 									}}
 								>
-									<img src={`//logo.clearbit.com/${item.name}.com?size=200`} />
+									<div
+										class={style.logo}
+										style={{
+											backgroundImage: `url(${`//logo.clearbit.com/${
+												item.name
+											}.com?size=200`})`
+										}}
+									/>
+
 									<H2>{item.name}</H2>
-									<H4 style={{ opacity: 0.7 }}>Last used: {item.activity}</H4>
+									<H4 style={{ opacity: 0.7 }}>Registered: {item.activity}</H4>
 
 									<Button
 										onClick={() =>
@@ -159,10 +169,20 @@ export default class Home extends Component {
 												selectedService: item
 											})
 										}
-										warning
+										style={{
+											background: "none",
+											color: "orangered",
+											padding: 0,
+											marginBottom: "1rem"
+										}}
 									>
-										Manage data
+										Delete data
 									</Button>
+									<br />
+
+									<a href="https://www.facebook.com/help/1701730696756992?helpref=hc_global_nav">
+										<Button primary>Download data</Button>
+									</a>
 								</Container>
 							</div>
 						))}
@@ -170,9 +190,6 @@ export default class Home extends Component {
 
 				{this.state.deletePopup &&
 					this.renderDeletePoup(this.state.selectedService)}
-
-				{this.state.successPopup &&
-					this.renderSuccessPoup(this.state.selectedService)}
 			</div>
 		);
 	}
