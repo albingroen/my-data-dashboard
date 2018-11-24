@@ -54,7 +54,7 @@ export default class Home extends Component {
 	renderDeletePoup(service) {
 		return (
 			<Popup
-				title={`Remove data from ${service.name}?`}
+				title={`Remove data from ${service.domain.split(".")[0]}?`}
 				width="500"
 				text="Are you sure you want to delete all of your data from this service? This cannot be undone."
 				warning
