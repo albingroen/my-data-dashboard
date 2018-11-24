@@ -37,7 +37,11 @@ export default class Home extends Component {
 						data: res.data,
 					});
 				})
-				.catch(err => console.log(err));
+				.catch(err => {
+					localStorage.removeItem("token");
+					window.location.replace("/login");
+					console.log(err);
+				});
 		}
 	}
 
