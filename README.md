@@ -1,4 +1,4 @@
-# Dashboard for your personal data
+# My-Data Dashboard
 
 > Take control of your data.
 
