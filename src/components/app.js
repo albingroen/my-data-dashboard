@@ -5,6 +5,7 @@ import Header from "./header";
 import Footer from "./footer";
 import Home from "./home";
 import Auth from "./auth";
+import Login from "./login";
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
@@ -16,12 +17,22 @@ export default class App extends Component {
 	};
 
 	render() {
-		return (
+		const token = localStorage.getItem("token");
+
+		return token ? (
+			<div id="app">
+				<Header />
+				<Router onChange={this.handleRoute}>
+					<Home path="/" />
+				</Router>
+				<Footer />
+			</div>
+		) : (
 			<div id="app">
 				<Header />
 				<Router onChange={this.handleRoute}>
 					<Auth path="/auth/google/callback" />
-					<Home path="/" />
+					<Login path="/login" />
 				</Router>
 				<Footer />
 			</div>

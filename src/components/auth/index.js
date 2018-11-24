@@ -1,3 +1,5 @@
+import { h, Component } from "preact";
+import cx from "classnames";
 import {
 	H1,
 	H2,
@@ -6,49 +8,37 @@ import {
 	Container,
 	Button,
 	Input,
-	Popup,
+	Popup
 } from "@wopify/ui-design";
-import { h, Component } from "preact";
-import style from "./style.less";
 import axios from "axios";
+import warning from "../../../src/warning.png";
+import style from "./style.less";
 
 export default class Home extends Component {
 	constructor() {
 		super();
 		this.state = {
 			searchValue: "",
-			deletePopup: false,
-			successPopup: false,
+			deletePopup: false
 		};
 	}
 
 	componentDidMount() {
-		// send this code to the server
-		// Save this.props.matches.code to localstorage and use that one for every request
-		// post to
-		/*
-		.post("http://localhost:3000/v1/auth/success", {
-			code: this.props.matches.code,
-		})
-		to get your data
+		localStorage.setItem("token", this.props.matches.code);
 
-		*/
-		console.log("props", this.props.matches.code);
+		// Authenticate
 		axios
-			.post("http://localhost:3000/v1/auth/success", {
-				code: this.props.matches.code,
+			.post("https://thawing-mountain-85132.herokuapp.com/v1/auth/success", {
+				code: this.props.matches.code
 			})
 			.then(res => {
-				console.log(res);
+				const { history } = this.props;
+				window.location.replace("/");
 			})
 			.catch(err => console.log(err));
 	}
 
 	render() {
-		return (
-			<div class={style.home}>
-				<p>hej</p>
-			</div>
-		);
+		return <div class={style.home} />;
 	}
 }

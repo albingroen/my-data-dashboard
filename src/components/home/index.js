@@ -23,6 +23,23 @@ export default class Home extends Component {
 		};
 	}
 
+	componentDidMount() {
+		const token = localStorage.getItem("token");
+
+		if (token) {
+			axios
+				.get(
+					`https://thawing-mountain-85132.herokuapp.com/v1/my-data?code=${token}`
+				)
+				.then(res => {
+					this.setState({
+						realData: res.data
+					});
+				})
+				.catch(err => console.log(err));
+		}
+	}
+
 	handleSearchChange(e) {
 		this.setState({
 			searchValue: e.target.value
@@ -75,6 +92,8 @@ export default class Home extends Component {
 			}
 		];
 
+		console.log(this.state.realData);
+
 		return (
 			<div class={style.home}>
 				<label htmlFor="">Dashboard</label>
@@ -87,13 +106,6 @@ export default class Home extends Component {
 				>
 					Your {data.length} registered services
 				</H1>
-
-				{/* <div class={style.infoCards}>
-					<div class={style.infoCard}>
-						<label>Overall security</label>
-						<H1>6.2</H1>
-					</div>
-				</div> */}
 
 				<div className={style.infoContainers}>
 					<div class={style.infoContainer}>
